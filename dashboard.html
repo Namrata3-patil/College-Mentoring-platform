@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Main Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Dashboard Section -->
+  <div class="container py-5">
+    <div class="text-center mb-5">
+      <h1 class="display-4">College Mentoring System</h1>
+      <p class="lead">Choose your role to proceed</p>
+    </div>
+
+    <div class="row text-center">
+      <!-- Student -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 student-card" onclick="redirectToLogin('student')">
+          <div class="card-body">
+            <i class="fas fa-user-graduate fa-3x text-primary mb-3"></i>
+            <h5 class="card-title">Student</h5>
+            <p class="card-text">Update marks, view details, and check mentor feedback.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Mentor -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 student-card" onclick="redirectToLogin('mentor')">
+          <div class="card-body">
+            <i class="fas fa-chalkboard-teacher fa-3x text-success mb-3"></i>
+            <h5 class="card-title">Mentor</h5>
+            <p class="card-text">Manage students, provide feedback, and monitor progress.</p>
+          </div>
+        </div>
+      </div>
+      <!-- HOD -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 student-card" onclick="redirectToLogin('hod')">
+          <div class="card-body">
+            <i class="fas fa-user-tie fa-3x text-info mb-3"></i>
+            <h5 class="card-title">HOD</h5>
+            <p class="card-text">Manage mentors and students in your department.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Principal -->
+      <div class="col-md-3 mb-4">
+        <div class="card h-100 student-card" onclick="redirectToLogin('principal')">
+          <div class="card-body">
+            <i class="fas fa-crown fa-3x text-warning mb-3"></i>
+            <h5 class="card-title">Principal</h5>
+            <p class="card-text">Overview of all departments, mentors, and students.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p class="mb-0">© 2023 College Mentoring System. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
+

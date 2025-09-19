@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HOD Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="dashboard.html">
+        <i class="fas fa-user-tie me-2"></i>College Mentoring System
+      </a>
+      <div class="d-flex">
+        <div id="userInfo" class="text-white me-3">
+          <span id="userName">HOD Name</span> (<span id="userRole">HOD</span>)
+        </div>
+        <button id="logoutBtn" class="btn btn-outline-light btn-sm">
+          <i class="fas fa-sign-out-alt me-1"></i>Logout
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOD Dashboard -->
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="col-md-3 sidebar">
+        <div class="d-flex flex-column p-3">
+          <h4 class="text-center mb-4">HOD Dashboard</h4>
+          <hr>
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a href="#" class="nav-link active" onclick="showHodTab('hodOverview', event)">
+                <i class="fas fa-home me-2"></i> Overview
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" onclick="showHodTab('hodMentors', event)">
+                <i class="fas fa-chalkboard-teacher me-2"></i> Manage Mentors
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" onclick="showHodTab('hodStudents', event)">
+                <i class="fas fa-users me-2"></i> Monitor Students
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link" onclick="showHodTab('hodReports', event)">
+                <i class="fas fa-file-alt me-2"></i> Reports
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Dashboard Content -->
+      <div class="col-md-9">
+        <div class="dashboard-container">
+          <h2 class="mb-4">Welcome, HOD Name</h2>
+
+          <!-- Overview -->
+          <div id="hodOverview" class="hod-tab">
+            <div class="row mb-4">
+              <div class="col-md-4">
+                <div class="stats-card bg-primary">
+                  <i class="fas fa-chalkboard-teacher"></i>
+                  <h3>10</h3>
+                  <p>Mentors</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="stats-card bg-success">
+                  <i class="fas fa-users"></i>
+                  <h3>250</h3>
+                  <p>Students</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="stats-card bg-info">
+                  <i class="fas fa-chart-line"></i>
+                  <h3>78%</h3>
+                  <p>Overall Pass %</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Manage Mentors -->
+          <div id="hodMentors" class="hod-tab" style="display:none;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>Manage Mentors</h4>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMentorModal">
+                <i class="fas fa-plus me-1"></i> Add Mentor
+              </button>
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Mentor List</h5>
+              </div>
+              <div class="card-body">
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                      <strong>Dr. Smith</strong>
+                      <div class="text-muted">smith@college.edu | Computer Science</div>
+                    </div>
+                    <div class="action-buttons">
+                      <span class="badge bg-primary rounded-pill">15 Students</span>
+                      <button class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                      <strong>Dr. Johnson</strong>
+                      <div class="text-muted">johnson@college.edu | Electronics</div>
+                    </div>
+                    <div class="action-buttons">
+                      <span class="badge bg-primary rounded-pill">12 Students</span>
+                      <button class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
+                    </div>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                      <strong>Dr. Lee</strong>
+                      <div class="text-muted">lee@college.edu | Mechanical</div>
+                    </div>
+                    <div class="action-buttons">
+                      <span class="badge bg-primary rounded-pill">18 Students</span>
+                      <button class="btn btn-sm btn-outline-primary">
+                        <i class="fas fa-edit"></i> Edit
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Monitor Students -->
+          <div id="hodStudents" class="hod-tab" style="display:none;">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4>Monitor Students</h4>
+              <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStudentModal">
+                <i class="fas fa-plus me-1"></i> Add Student
+              </button>
+            </div>
+            
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Student Performance</h5>
+              </div>
+              <div class="card-body">
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Mentor</th>
+                      <th>CGPA</th>
+                      <th>Attendance</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>John Doe</td>
+                      <td>Dr. Smith</td>
+                      <td>8.5</td>
+                      <td>85%</td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editStudentModal">
+                          <i class="fas fa-edit"></i> Edit
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Jane Smith</td>
+                      <td>Dr. Johnson</td>
+                      <td>7.9</td>
+                      <td>92%</td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editStudentModal">
+                          <i class="fas fa-edit"></i> Edit
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Michael Brown</td>
+                      <td>Dr. Lee</td>
+                      <td>6.8</td>
+                      <td>75%</td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editStudentModal">
+                          <i class="fas fa-edit"></i> Edit
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reports -->
+          <div id="hodReports" class="hod-tab" style="display:none;">
+            <div class="card">
+              <div class="card-header">
+                <h5 class="card-title mb-0">Reports</h5>
+              </div>
+              <div class="card-body">
+                <p>HOD reports and departmental analytics will be displayed here.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Mentor Modal -->
+  <div class="modal fade" id="addMentorModal" tabindex="-1" aria-labelledby="addMentorModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addMentorModalLabel">Add New Mentor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addMentorForm">
+            <div class="mb-3">
+              <label for="mentorName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="mentorName" required>
+            </div>
+            <div class="mb-3">
+              <label for="mentorEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="mentorEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="mentorDepartment" class="form-label">Department</label>
+              <select class="form-select" id="mentorDepartment" required>
+                <option value="">Choose...</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="mentorQualification" class="form-label">Qualification</label>
+              <input type="text" class="form-control" id="mentorQualification" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="addMentor()">Add Mentor</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Student Modal -->
+  <div class="modal fade" id="addStudentModal" tabindex="-1" aria-labelledby="addStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addStudentModalLabel">Add New Student</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addStudentForm">
+            <div class="mb-3">
+              <label for="studentName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="studentName" required>
+            </div>
+            <div class="mb-3">
+              <label for="studentEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="studentEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="studentId" class="form-label">Student ID</label>
+              <input type="text" class="form-control" id="studentId" required>
+            </div>
+            <div class="mb-3">
+              <label for="studentDepartment" class="form-label">Department</label>
+              <select class="form-select" id="studentDepartment" required>
+                <option value="">Choose...</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="studentMentor" class="form-label">Assign Mentor</label>
+              <select class="form-select" id="studentMentor" required>
+                <option value="">Choose...</option>
+                <option value="Dr. Smith">Dr. Smith</option>
+                <option value="Dr. Johnson">Dr. Johnson</option>
+                <option value="Dr. Lee">Dr. Lee</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="addStudent()">Add Student</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Student Modal -->
+  <div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="editStudentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editStudentModalLabel">Edit Student</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editStudentForm">
+            <div class="mb-3">
+              <label for="editStudentName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="editStudentName" required>
+            </div>
+            <div class="mb-3">
+              <label for="editStudentEmail" class="form-label">Email</label>
+              <input type="email" class="form-control" id="editStudentEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="editStudentId" class="form-label">Student ID</label>
+              <input type="text" class="form-control" id="editStudentId" required readonly>
+            </div>
+            <div class="mb-3">
+              <label for="editStudentDepartment" class="form-label">Department</label>
+              <select class="form-select" id="editStudentDepartment" required>
+                <option value="">Choose...</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Mechanical">Mechanical</option>
+                <option value="Civil">Civil</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="editStudentMentor" class="form-label">Assign Mentor</label>
+              <select class="form-select" id="editStudentMentor" required>
+                <option value="">Choose...</option>
+                <option value="Dr. Smith">Dr. Smith</option>
+                <option value="Dr. Johnson">Dr. Johnson</option>
+                <option value="Dr. Lee">Dr. Lee</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="editStudentCGPA" class="form-label">CGPA</label>
+              <input type="number" step="0.1" min="0" max="10" class="form-control" id="editStudentCGPA" required>
+            </div>
+            <div class="mb-3">
+              <label for="editStudentAttendance" class="form-label">Attendance (%)</label>
+              <input type="number" step="1" min="0" max="100" class="form-control" id="editStudentAttendance" required>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" onclick="updateStudent()">Update Student</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p class="mb-0">© 2023 College Mentoring System. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/hod.js"></script>
+</body>
+</html>

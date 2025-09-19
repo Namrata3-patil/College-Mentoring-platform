@@ -1,0 +1,147 @@
+
+:root {
+    --primary: #3b5998;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+}
+
+body {
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.card {
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 10px;
+}
+
+.card-header {
+    background-color: var(--primary);
+    color: white;
+    border-radius: 10px 10px 0 0 !important;
+}
+
+.navbar {
+    background-color: var(--primary);
+}
+
+.sidebar {
+    background-color: var(--dark);
+    color: white;
+    min-height: calc(100vh - 56px);
+}
+
+.sidebar .nav-link {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 15px 20px;
+    transition: all 0.3s;
+}
+
+.sidebar .nav-link:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link.active {
+    color: white;
+    background-color: var(--info);
+}
+
+.stats-card {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.stats-card i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.student-card {
+    transition: transform 0.3s;
+}
+
+.student-card:hover {
+    transform: translateY(-5px);
+}
+
+.progress {
+    height: 10px;
+    margin-bottom: 10px;
+}
+
+.role-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+footer {
+    margin-top: auto;
+    background-color: var(--dark);
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+.form-section {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+}
+
+.search-box {
+  position: relative;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 0 0 5px 5px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  display: none;
+}
+
+.search-result-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.search-result-item:hover {
+  background-color: #f8f9fa;
+}
